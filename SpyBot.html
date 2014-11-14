@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="JavaScript.js"> </script>
+	<script>
+		var socket = new io.socket('ws://10.189.0.154',{port: 8080}); 
+		socket.connect(); 
+		$(document).ready(function(){
+			var socket = new WebSocket('ws://10.189.0.154:8080');
+			$("#upLeft").click(function(){
+				window.alert("upLeft"); 
+				socket.send('upLeft');
+				}); 
+			}); 
+	</script> 
+
+    <title>Spy Bot</title>
+    <style type="text/css">
+        #sign_in_panel
+        {
+            margin-left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <script>move_img</script>
+    <div class = "header">
+        <img id="main_pic" alt="" src="http://www.prayerthoughts.com/prayerthoughts/Spiritual_Warfare/images/pt1171_paranoid_spy_anim.gif"/>
+        <h1 id="main_head">Spy Bot</h1>
+    </div>
+    <nav>
+            <div id ="sign_in_panel">
+                <button type="button" id="new_agent_button" onclick="new_agent_function()" class="button3">New Agent</button>
+                <button type="button" id="sign_in_button" onclick="sign_in_function()" class="button3">Sign-In</button>
+                <input type="password" id="pass_text_box" name="password" placeholder="Password" required />
+                <label id="pass_label">Password:</label>
+                <input type="text" id="user_text_box" name="username" placeholder="Your Agent Name" required />
+                <label id="user_label">Username:</label>
+                <!--<input type="submit" value="Submit" name="Log-In" class="button3" /> -->
+            </div>
+            <div id ="sign_out_panel">
+                <button type="button" id="sign_out_button" onclick="sign_out_function()" class="button3">Sign-Out</button>
+            </div>
+
+    </nav>
+    <article>
+        <h2 id="web_cam_header">Live Webcam</h2>
+        <br />
+        <div id ="new_user">
+            <label>Username:</label>
+            <input type="text" name="username" placeholder="Your Agent Name" required />
+            <br />
+            <label>Password:</label>
+                <input type="password" name="password" placeholder="Password" required />
+            <br />
+            <label>Retype Password:</label>
+                <input type="password" name="password" placeholder="Password" required />
+            <br />
+            <button type="button" onclick="hide_new_user_Function() " class="button3">Save Agent</button>
+        </div>
+    </article>
+    <aside>
+        <h2>Manuver Car</h2>
+        <div id="load_screen">
+            <p>In order to manuver the car you must first Sign-In above!</p>
+        </div>
+        <div id="valid_agent">
+            <button  onclick="upLeft()" class= "button2"><div class="button2">Up & Left</div></button>
+            <button  onclick="forward()" class= "button2"><div class="button2">Up & Up</div></button>
+            <button  onclick="upRight()" class= "button2"><div class="button2">Up & Right</div></button><br/>
+            <button  onclick="downLeft()"  class= "button2"><div class="button2">Down & Left</div></button>
+            <button  onclick="reverse()" class= "button2"><div class="button2">Down & Down</div></button>
+            <button  onclick="downRight()" class= "button2"><div class="button2">Down & Right</div></button>
+        </div>
+        <div id="pending_control">
+            <p>Sorry but there is currently someone operating the Spy Bot</p>
+        </div>
+        <div id="starting_agent">
+            <p>You must be an authorized agent to operate the car</p>
+        </div>
+    </aside>
+</body>
+</html>
